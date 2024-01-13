@@ -18,6 +18,8 @@ class MyHash
 
     string.each_char { |char| hash_value = hash_value * prime_number + char.ord }
     hash_value
+  rescue NoMethodError
+    puts 'please enter a string argument'
   end
 
   def set(key, value)
