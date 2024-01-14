@@ -32,4 +32,21 @@ describe MyHash do
       end
     end
   end
+
+  describe '#set' do
+    context 'when adding key/value pairs to array' do
+      it 'creates k/v pair for "test, :test" at position 0' do
+        key = 'test'
+        value = :test
+        expect { hash.set(key, value) }.to change { hash.buckets[0] }.from(nil).to(LinkedList)
+      end
+
+      it 'expects value to eq :test for key "test"' do
+        key = 'test'
+        value = :test
+        hash.set(key, value)
+        expect(hash.buckets[0].at(0).value).to eq(:test)
+      end
+    end
+  end
 end
